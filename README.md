@@ -1,19 +1,8 @@
-# Node Generator [![Build Status](https://secure.travis-ci.org/yeoman/generator-node.svg?branch=master)](https://travis-ci.org/yeoman/generator-node)
-
-> Create a node.js module with [Yeoman][], including nodeunit unit tests.
-
-This generator is based of
-[grunt-init-node](https://github.com/gruntjs/grunt-init-node), authored by the
-magnificient GruntJS team.
-
-Maintained by Kyle Robinson Young, Addy Osmani and Stephen Sawchuck.
-
-[Yeoman]: http://yeoman.io/
-
+# Nodepack Generator
 
 ## Installation
 
-Install the generator by running: `npm install -g generator-node`.
+Install the generator by running: `npm install -g generator-nodepack`.
 
 
 ## Usage
@@ -21,7 +10,7 @@ Install the generator by running: `npm install -g generator-node`.
 At the command-line, cd into an empty directory, run this command and follow the prompts.
 
 ```
-yo node
+yo nodepack
 ```
 
 _Note that this template will generate files in the current directory, so be sure to change to a new directory first if you don't want to overwrite existing files._

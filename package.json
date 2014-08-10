@@ -1,49 +1,49 @@
 {
-  "name": "generator-node",
-  "version": "0.3.1",
-  "description": "A node generator for Yeoman",
-  "keywords": [
-    "yeoman-generator",
-    "scaffold",
-    "node"
-  ],
-  "homepage": "https://github.com/yeoman/generator-node",
-  "bugs": "https://github.com/yeoman/generator-node/issues",
-  "author": {
-    "name": "Addy Osmani",
-    "email": "addyosmani@gmail.com",
-    "url": "https://github.com/addyosmani"
-  },
-  "main": "app/index.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/yeoman/generator-node.git"
-  },
-  "scripts": {
-    "test": "mocha"
-  },
-  "dependencies": {
-    "chalk": "~0.4.0",
-    "npm-name": "~0.1.0",
-    "yeoman-generator": "~0.17.0"
-  },
-  "devDependencies": {
-    "mocha": "*",
-    "grunt": "~0.4.5"
-  },
-  "peerDependencies": {
-    "yo": ">=1.0.3"
-  },
-  "engines": {
-    "node": ">= 0.10.0",
-    "npm": ">=1.2.10"
-  },
-  "files": [
-    "app"
-  ],
-  "licenses": [
-    {
-      "type": "MIT"
-    }
-  ]
+	"name": "generator-nodepack",
+	"version": "0.3.1",
+	"description": "This Yeoman generator sets up a project with Node serving public files.",
+	"keywords": [
+		"yeoman-generator",
+		"scaffold",
+		"node"
+	],
+	"homepage": "https://github.com/morgante/generator-nodepack",
+	"bugs": "https://github.com/morgante/generator-nodepack/issues",
+	"author": {
+		"name": "Morgante Pell",
+		"email": "me@morgante.net",
+		"url": "http://morgante.net"
+	},
+	"main": "app/index.js",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/morgante/generator-nodepack.git"
+	},
+	"scripts": {
+		"test": "mocha"
+	},
+	"dependencies": {
+		"chalk": "~0.4.0",
+		"npm-name": "~0.1.0",
+		"yeoman-generator": "~0.17.0"
+	},
+	"devDependencies": {
+		"mocha": "*",
+		"grunt": "~0.4.5"
+	},
+	"peerDependencies": {
+		"yo": ">=1.0.3"
+	},
+	"engines": {
+		"node": ">= 0.10.0",
+		"npm": ">=1.2.10"
+	},
+	"files": [
+		"app"
+	],
+	"licenses": [
+		{
+			"type": "MIT"
+		}
+	]
 }
