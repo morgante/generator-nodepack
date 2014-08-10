@@ -63,10 +63,6 @@ var NodeGenerator = yeoman.generators.Base.extend({
 			name: 'keywords',
 			message: 'Key your keywords (comma to split)'
 		}, {
-			name: 'cli',
-			message: 'Do you need cli tools?',
-			default: 'yes'
-		}, {
 			name: 'browser',
 			message: 'Do you need browserify?',
 			default: 'yes'
@@ -110,10 +106,6 @@ var NodeGenerator = yeoman.generators.Base.extend({
 
 		this.template('_README.md', 'README.md');
 		this.template('_package.json', 'package.json');
-
-		if (this.props.cli === 'yes' || this.props.cli) {
-			this.template('_cli.js', 'cli.js');
-		}
 	},
 
 	projectfiles: function () {
