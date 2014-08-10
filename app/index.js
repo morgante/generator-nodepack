@@ -98,6 +98,7 @@ var NodeGenerator = yeoman.generators.Base.extend({
 
 	askFor: function () {
 		var done = this.async();
+		var self = this;
 
 		this.currentYear = (new Date()).getFullYear();
 
@@ -124,7 +125,16 @@ var NodeGenerator = yeoman.generators.Base.extend({
 
 			this.props = props;
 
-			done();
+			// ask for our specific options
+			this.prompt([{
+				name: 'port',
+				message: 'Port to listen on',
+				default: 3000
+			}], function (answers) {
+				self.port = answers.port;
+
+				done();
+			});
 		}.bind(this));
 	},
 
@@ -180,6 +190,7 @@ var NodeGenerator = yeoman.generators.Base.extend({
 		pkg.dependencies = pkg.dependencies || {};
 
 		pkg.dependencies['express'] = '^4.8.2';
+		pkg.dependencies['lodash'] = '^2.4.1';
 
 		this.dest.write('package.json', JSON.stringify(pkg, null, '\t'));
 	},
@@ -193,6 +204,9 @@ var NodeGenerator = yeoman.generators.Base.extend({
 		this.template('example/name_example.js', 'example/' + this.slugname + '_example.js');
 
 		this.template('_index.js', 'index.js');
+
+		this.mkdir('src/routes');
+		this.copy('src/routes/index.js', 'src/routes/index.js');
 	},
 
 	install: function () {
