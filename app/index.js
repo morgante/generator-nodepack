@@ -130,8 +130,14 @@ var NodeGenerator = yeoman.generators.Base.extend({
 				name: 'port',
 				message: 'Port to listen on',
 				default: 3000
+			}, {
+				name: 'public',
+				message: 'Serve static files in public?',
+				type: 'confirm',
+				default: true
 			}], function (answers) {
 				self.port = answers.port;
+				self.publicize = answers.public;
 
 				done();
 			});
@@ -202,6 +208,11 @@ var NodeGenerator = yeoman.generators.Base.extend({
 		this.template('test/name_test.js', 'test/' + this.slugname + '_test.js');
 		this.mkdir('example');
 		this.template('example/name_example.js', 'example/' + this.slugname + '_example.js');
+
+		if (this.publicize) {
+			this.mkdir('public');
+			this.template('public/robots.txt', 'public/robots.txt');
+		}
 
 		this.template('_index.js', 'index.js');
 
