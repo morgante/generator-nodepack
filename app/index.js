@@ -108,8 +108,7 @@ var NodeGenerator = yeoman.generators.Base.extend({
 		this.copy('gitignore', '.gitignore');
 		this.copy('travis.yml', '.travis.yml');
 
-		// this.template('_README.md', 'README.md');
-		this.template('_Gruntfile.js', 'Gruntfile.js');
+		this.template('_README.md', 'README.md');
 		this.template('_package.json', 'package.json');
 
 		if (this.props.cli === 'yes' || this.props.cli) {
