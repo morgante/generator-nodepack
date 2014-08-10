@@ -1,9 +1,15 @@
 # Nodepack Generator
 
+Nodepack is a simple generator for Express 4 applications. It installs the necessary dependencies and sets up Express to automatically listen/share routes in a `src/routes` directory.
+
+Two generators are exposed
+
+* `nodepack` - creates a new Express app
+* `nodepack:route` - creates a new Express route
+
 ## Installation
 
 Install the generator by running: `npm install -g generator-nodepack`.
-
 
 ## Usage
 
