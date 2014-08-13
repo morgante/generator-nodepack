@@ -4,7 +4,9 @@ var path = require('path');
 var npmName = require('npm-name');
 var yeoman = require('yeoman-generator');
 
-var NodeGenerator = yeoman.generators.Base.extend({
+var BaseGenerator = require('../lib/generator');
+
+var NodeGenerator = BaseGenerator.extend({
 	init: function () {
 		this.pkg = require('../package.json');
 		this.log(
@@ -17,84 +19,6 @@ var NodeGenerator = yeoman.generators.Base.extend({
 		return !this.dest.exists('package.json');
 	},
 
-	_getDetails: function (cb) {
-		if (this.dest.exists('package.json')) {
-			// do something
-			console.log('read from package.json');
-			var pkg = this.dest.readJSON('package.json');
-
-			var props = {
-				'pkgName': pkg.name,
-				'description': pkg.description,
-				'homepage': pkg.homepage,
-				'license': pkg.license,
-				'authorName': pkg.author.name,
-				'authorEmail': pkg.author.email,
-				'authorUrl': pkg.author.url,
-				'keywords': pkg.keywords
-			};
-
-			// parse author github from URL
-			var repo = pkg.repository.url.match(/https:\/\/github.com\/(\w+)\/(\w+)/);
-			props.githubUsername = repo[1];
-
-			cb(null, props);
-		} else {
-			var prompts = [{
-				name: 'name',
-				message: 'Module Name',
-				default: path.basename(process.cwd()),
-			}, {
-				type: 'confirm',
-				name: 'pkgName',
-				message: 'The name above already exists on npm, choose another?',
-				default: true,
-				when: function (answers) {
-					var done = this.async();
-
-					npmName(answers.name, function (err, available) {
-						if (!available) {
-							done(true);
-						}
-
-						done(false);
-					});
-				}
-			}, {
-				name: 'description',
-				message: 'Description',
-				default: 'The best module ever.'
-			}, {
-				name: 'homepage',
-				message: 'Homepage'
-			}, {
-				name: 'license',
-				message: 'License',
-				default: 'MIT'
-			}, {
-				name: 'githubUsername',
-				message: 'GitHub username'
-			}, {
-				name: 'authorName',
-				message: 'Author\'s Name'
-			}, {
-				name: 'authorEmail',
-				message: 'Author\'s Email'
-			}, {
-				name: 'authorUrl',
-				message: 'Author\'s Homepage'
-			}, {
-				name: 'keywords',
-				message: 'Key your keywords (comma to split)'
-			}];
-
-			this.prompt(prompts, function (props) {
-				props.keywords = props.keywords.split(',');
-
-				cb(null, props);
-			});
-		}
-	},
 
 	askFor: function () {
 		var done = this.async();
@@ -102,7 +26,17 @@ var NodeGenerator = yeoman.generators.Base.extend({
 
 		this.currentYear = (new Date()).getFullYear();
 
-		this._getDetails(function (err, props) {
+		this._getDetails([
+			'pkgName',
+			'description',
+			'homepage',
+			'license',
+			'authorName',
+			'authorEmail',
+			'authorUrl',
+			'keywords',
+			'githubUsername'
+		], function (err, props) {
 			this.slugname = this._.slugify(props.name);
 			this.safeSlugname = this.slugname.replace(
 				/-+([a-zA-Z0-9])/g,
