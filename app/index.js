@@ -95,7 +95,7 @@ var NodeGenerator = BaseGenerator.extend({
 
 		if (!this.dest.exists('package.json')) {
 			pkg = {
-				'name': this.slugName,
+				'name': this.slugname,
 				'version': '0.0.0',
 				'main': 'server.js',
 				'description': this.props.description,
