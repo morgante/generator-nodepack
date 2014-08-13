@@ -1,0 +1,24 @@
+FROM		morgante/node
+MAINTAINER 	<%= props.authorName %> <<%= props.authorEmail %>>
+
+# Start app dir
+RUN 		mkdir /app
+
+<% if (gulp) { %>
+# Install Gulp
+RUN 		npm install -g gulp
+<% } %>
+
+# Install app dependencies
+ADD 		./package.json /app/package.json
+RUN			cd /app; npm install -d
+
+# Load app dependencies
+ADD 		. /app/src
+RUN 		ln -s /app/src /src
+
+EXPOSE  	<%= port %>
+
+WORKDIR		/app/src
+
+CMD 		["npm", "start"]
